@@ -42,6 +42,21 @@ button:hover {
   border-color: aliceblue;
   cursor: pointer;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: rgb(0, 0, 0);
+}
+
+li:first-letter {
+  text-transform: capitalize;
+}
 .todayImg {
   position: relative;
   width: 160px;

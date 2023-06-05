@@ -33,6 +33,11 @@
         </div>
         <h1>Kyiv, Ukraine</h1>
         <p id="timeNow">Chance of rain/current time</p>
+        <ul>
+          <li>Wind:<span id="wind"></span>km/h</li>
+          <li>Humidity <span id="humidity">%</span></li>
+          <li><span id="description"></span></li>
+        </ul>
         <span class="temperature" id="temperature">18</span>
         <span class="c-f">
           <a href="#" id="celsius-link" class="active">°C</a> |
@@ -97,6 +102,7 @@
       }
 
       function showNowWeather(response) {
+        console.log(response.data.main.temp);
         temperatureC = response.data.main.temp;
         let h1 = document.querySelector("h1");
         h1.innerHTML = response.data.name;
@@ -104,11 +110,17 @@
         let temperature = Math.round(response.data.main.temp);
         temperatureC = Math.round(response.data.main.temp);
         h2.innerHTML = `${temperature}`;
+        let descriptionElement = document.querySelector("#description");
+        let humidityElement = document.querySelector("#humidity");
+        humidityElement.innerHTML = response.data.main.humidity;
+        let windElement = document.querySelector("#wind");
+        windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
         let iconElement = document.querySelector("#todayIcon");
         iconElement.setAttribute(
           "src",
           `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
         );
+        iconElement.setAttribute("alt", response.data.weather[0].description);
       }
 
       function retrievePosition(response) {
