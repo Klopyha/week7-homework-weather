@@ -1,0 +1,83 @@
+.mb-3 {
+  margin-top: 30px;
+  text-align: center;
+  width: 770px;
+}
+h1 {
+  font-family: "Space Grotesk", sans-serif;
+  color: rgb(68, 70, 75);
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+.temperature {
+  font-family: "Space Grotesk", sans-serif;
+  color: rgb(68, 70, 75);
+  font-weight: 400;
+  font-size: 5em;
+  margin-bottom: 5rem;
+}
+.c-f {
+  position: relative;
+  top: -48px;
+}
+.c-f .active {
+  color: black;
+  cursor: default;
+}
+.c-f .active:hover {
+  text-decoration: none;
+}
+button {
+  display: block;
+  background-color: aliceblue;
+  color: black;
+  border-color: black;
+  margin-bottom: 1rem;
+  border-radius: 0.3cm;
+  transition: 150ms;
+}
+button:hover {
+  background-color: rgb(102, 101, 101);
+  color: aliceblue;
+  border-color: aliceblue;
+  cursor: pointer;
+}
+.todayImg {
+  position: relative;
+  width: 160px;
+  display: block;
+  top: -280px;
+  right: -630px;
+}
+.sourceCode {
+  position: relative;
+  display: block;
+  top: -150px;
+  right: -260px;
+}
+.raw {
+  padding-top: 0;
+  margin-top: 10;
+  border-color: black;
+  border: 10cm;
+}
+.next-days {
+  width: 750px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-width: 0.07cm;
+  border-color: black;
+  border-style: solid;
+}
+.col {
+  border-right-style: solid;
+  border-left-style: solid;
+  border-width: 0.05cm;
+  border-color: black;
+}
+.coltue {
+  border-left-style: none;
+}
+.colsat {
+  border-right-style: none;
+}
