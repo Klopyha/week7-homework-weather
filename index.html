@@ -91,13 +91,6 @@
         let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         return days[day];
       }
-      /*  function formatDay(timestamp) {
-        let date = new Date(timestamp * 1000);
-        let day = date.getDay();
-        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-        return days[day];
-      }*/
 
       function displayForecast(response) {
         let forecast = response.data.daily;
@@ -176,34 +169,6 @@
         let windElement = document.querySelector("#wind");
         windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
       }
-
-      /*let iconElement = document.querySelector("#todayIcon");
-        iconElement.setAttribute(
-          "src",
-          `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-        );
-        iconElement.setAttribute("alt", response.data.weather[0].description);
-
-        getForecast(response.data.coord);
-      }*/
-
-      /*function retrievePosition(response) {
-        let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-        axios.get(url).then(showNowWeather);
-        temperatureC = Math.round(response.data.main.temp);
-      }
-
-      function showCurrentPosition(event) {
-        event.preventDefault();
-        navigator.geolocation.getCurrentPosition(retrievePosition);
-      }
-
-      let tempButton = document.querySelector("button");
-      tempButton.addEventListener("click", showCurrentPosition);*/
-
       function showTemperatureInC(event) {
         event.preventDefault();
         showC.classList.add("active");
