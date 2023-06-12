@@ -53,7 +53,7 @@
         />
         <span class="sourceCode">
           <a
-            href="https://github.com/Klopyha/weather-app-shecodes-homework.git"
+            href="https://github.com/Klopyha/week7-homework-weather"
             target="_blank"
             >Open source code</a
           >
@@ -97,7 +97,7 @@
                 ${day} <br /><img src="images/sun.png" alt="sunny" width="50" />
                 <p class="weekdayTemp">+17°</p>
               </div>
-           
+
            `;
         });
 
@@ -132,6 +132,12 @@
         }
       }
 
+      function getForecast(coordinates) {
+        console.log(coordinates);
+        let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${bd3bb6534458ba51b48c49f5155745b6}&units=metric`;
+        console.log(apiUrl);
+      }
       function showNowWeather(response) {
         console.log(response.data.main.temp);
         temperatureC = response.data.main.temp;
@@ -152,6 +158,8 @@
           `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
         );
         iconElement.setAttribute("alt", response.data.weather[0].description);
+
+        getForecast(response.data.coord);
       }
 
       function retrievePosition(response) {
