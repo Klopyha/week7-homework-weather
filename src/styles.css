@@ -27,7 +27,7 @@ h1 {
 .c-f .active:hover {
   text-decoration: none;
 }
-button {
+/*button {
   display: block;
   background-color: aliceblue;
   color: black;
@@ -42,7 +42,7 @@ button:hover {
   border-color: aliceblue;
   cursor: pointer;
 }
-
+*/
 ul {
   margin: 0;
   padding: 0;

@@ -43,7 +43,7 @@
           <a href="#" id="celsius-link" class="active">°C</a> |
           <a href="#" id="fahrenheit-link">°F</a>
         </span>
-        <button>Current Location</button>
+        <!--<button>Current Location</button>-->
         <div class="next-days" id="forecast"></div>
         <img
           class="todayImg"
@@ -176,6 +176,7 @@
         let windElement = document.querySelector("#wind");
         windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
       }
+
       /*let iconElement = document.querySelector("#todayIcon");
         iconElement.setAttribute(
           "src",
