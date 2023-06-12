@@ -85,20 +85,41 @@
       let timeNow = document.querySelector("#timeNow");
       timeNow.innerHTML = `${day} ${hour}:${min}`;
 
-      function displayForecast() {
+      function formatDate(timestamp) {
+        let date = new Date(timestamp * 1000);
+        let day = date.getDay();
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        return days[day];
+      }
+      /*  function formatDay(timestamp) {
+        let date = new Date(timestamp * 1000);
+        let day = date.getDay();
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        return days[day];
+      }*/
+
+      function displayForecast(response) {
+        let forecast = response.data.daily;
         let forecastElement = document.querySelector("#forecast");
         let forecastHTML = `<div class="row">`;
-        let days = ["Tue", "Wed", "Thu", "Fri"];
-        days.forEach(function (day) {
-          forecastHTML =
-            forecastHTML +
-            `
+
+        forecast.forEach(function (forecastDay, index) {
+          if (index < 6) {
+            forecastHTML =
+              forecastHTML +
+              `
               <div class="col coltue">
-                ${day} <br /><img src="images/sun.png" alt="sunny" width="50" />
-                <p class="weekdayTemp">+17°</p>
+                ${formatDate(
+                  forecastDay.dt
+                )}<br /><img src=https://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png
+                <p class="weekdayTemp">${Math.round(forecastDay.temp.day)}°</p>
               </div>
 
            `;
+          }
         });
 
         forecastHTML = forecastHTML + `</div>`;
@@ -129,14 +150,16 @@
             `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
           );
           iconElement.setAttribute("alt", response.data.weather[0].description);
+          getForecast(response.data.coord);
         }
       }
 
       function getForecast(coordinates) {
         console.log(coordinates);
         let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${bd3bb6534458ba51b48c49f5155745b6}&units=metric`;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
         console.log(apiUrl);
+        axios.get(apiUrl).then(displayForecast);
       }
       function showNowWeather(response) {
         console.log(response.data.main.temp);
@@ -152,7 +175,8 @@
         humidityElement.innerHTML = response.data.main.humidity;
         let windElement = document.querySelector("#wind");
         windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
-        let iconElement = document.querySelector("#todayIcon");
+      }
+      /*let iconElement = document.querySelector("#todayIcon");
         iconElement.setAttribute(
           "src",
           `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -160,9 +184,9 @@
         iconElement.setAttribute("alt", response.data.weather[0].description);
 
         getForecast(response.data.coord);
-      }
+      }*/
 
-      function retrievePosition(response) {
+      /*function retrievePosition(response) {
         let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
@@ -177,7 +201,7 @@
       }
 
       let tempButton = document.querySelector("button");
-      tempButton.addEventListener("click", showCurrentPosition);
+      tempButton.addEventListener("click", showCurrentPosition);*/
 
       function showTemperatureInC(event) {
         event.preventDefault();
@@ -204,8 +228,6 @@
 
       let cityForm = document.querySelector("#search-form");
       cityForm.addEventListener("search", changeh1);
-
-      displayForecast();
     </script>
   </body>
 </html>

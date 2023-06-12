@@ -87,17 +87,5 @@ li:first-letter {
   padding-left: 3px;
 }
 .col {
-  padding-right: 1px;
-  border-right-style: solid;
-  border-left-style: solid;
-  border-width: 0.03cm;
-}
-.coltue {
-  margin-left: 3px;
-  padding-left: 25px;
-
-  border-left-style: none;
-}
-.colsat {
-  border-right-style: none;
+  padding-right: 0px;
 }
