@@ -34,8 +34,8 @@
         <h1>Kyiv, Ukraine</h1>
         <p id="timeNow">Chance of rain/current time</p>
         <ul>
-          <li>Wind:<span id="wind"></span>km/h</li>
-          <li>Humidity <span id="humidity">%</span></li>
+          <li>Wind: <span id="wind"></span>km/h</li>
+          <li>Humidity: <span id="humidity"></span>%</li>
           <li><span id="description"></span></li>
         </ul>
         <span class="temperature" id="temperature">18</span>
@@ -44,16 +44,7 @@
           <a href="#" id="fahrenheit-link">°F</a>
         </span>
         <button>Current Location</button>
-        <div class="next-days">
-          <div class="container text-center">
-            <div class="row">
-              <div class="col coltue">
-                Tue <br /><img src="images/sun.png" alt="sunny" width="50" />
-                <p class="weekdayTemp">+17°</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="next-days" id="forecast"></div>
         <img
           class="todayImg"
           src="images/sun.png"
@@ -93,6 +84,26 @@
 
       let timeNow = document.querySelector("#timeNow");
       timeNow.innerHTML = `${day} ${hour}:${min}`;
+
+      function displayForecast() {
+        let forecastElement = document.querySelector("#forecast");
+        let forecastHTML = `<div class="row">`;
+        let days = ["Tue", "Wed", "Thu", "Fri"];
+        days.forEach(function (day) {
+          forecastHTML =
+            forecastHTML +
+            `
+              <div class="col coltue">
+                ${day} <br /><img src="images/sun.png" alt="sunny" width="50" />
+                <p class="weekdayTemp">+17°</p>
+              </div>
+           
+           `;
+        });
+
+        forecastHTML = forecastHTML + `</div>`;
+        forecastElement.innerHTML = forecastHTML;
+      }
 
       let h1 = document.querySelector("h1");
       function changeh1(event) {
@@ -185,6 +196,8 @@
 
       let cityForm = document.querySelector("#search-form");
       cityForm.addEventListener("search", changeh1);
+
+      displayForecast();
     </script>
   </body>
 </html>
